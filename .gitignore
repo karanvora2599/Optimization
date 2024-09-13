@@ -11,3 +11,14 @@
 # Ignore build output
 /build/
 /dist/
+
+/CPP_Resnet/build
+/.vscode
+/CPP_Resnet/data
+/CPP_Resnet/.vscode
+/CPP_Resnet/main1.cpp
+/CPP_Resnet/main2.cpp
+/CPP_Resnet/main3.cpp
+/CPP_Resnet/main4.cpp
+/CPP_Resnet/main5.cpp
+/CPP_Resnet/ResNetMixedCompile.py
