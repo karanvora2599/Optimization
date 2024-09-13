@@ -1,0 +1,44 @@
+cmake_minimum_required(VERSION 3.10)
+project(CPP_ResNet LANGUAGES CXX CUDA)
+
+# Set the C++ standard to C++17
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Set the LibTorch directory path explicitly
+set(CMAKE_PREFIX_PATH "C:/Program Files/libtorch")
+
+# Set the CUDA version (choose one version explicitly)
+set(CUDA_TOOLKIT_ROOT_DIR "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.4")
+# set(CMAKE_CUDA_COMPILER "${CUDA_TOOLKIT_ROOT_DIR}/bin/nvcc")
+
+# Include CUDA headers and libraries for the chosen version
+include_directories("${CUDA_TOOLKIT_ROOT_DIR}/include")
+link_directories("${CUDA_TOOLKIT_ROOT_DIR}/lib/x64")
+
+# Disable nvToolsExt and CUDA profiling
+# set(USE_NVTX OFF)
+set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} -lineinfo")
+
+# Find the Torch package
+find_package(Torch REQUIRED)
+
+# Add the executable
+# add_executable(CPP_ResNet main.cpp)
+add_executable(CPP_ResNet main.cpp resnet.h CIFAR10.cpp CIFAR10.h)
+# set_property(TARGET resnet_cifar10 PROPERTY CXX_STANDARD 14)
+
+# Link Torch and CUDA libraries to your executable
+target_link_libraries(CPP_ResNet "${TORCH_LIBRARIES}" cuda cudart)
+
+if (MSVC)
+  file(GLOB TORCH_DLLS "${TORCH_INSTALL_PREFIX}/lib/*.dll")
+  add_custom_command(TARGET CPP_ResNet
+                     POST_BUILD
+                     COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                     ${TORCH_DLLS}
+                     $<TARGET_FILE_DIR:CPP_ResNet>)
+endif (MSVC)
+
+# Display the CUDA version in the output
+message(STATUS "Using CUDA Version: ${CUDA_TOOLKIT_ROOT_DIR}")
