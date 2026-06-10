@@ -55,7 +55,7 @@ static int count_correct(const float *d_logits, const int *d_labels, int N, int 
 int main(int argc, char **argv)
 {
     const char *data_root = (argc > 1) ? argv[1]
-        : "C:/Users/karan/Documents/Optimization Techniques/CPP_ResNet/data";
+        : "C:/Users/karan/Documents/Optimization Techniques/CUDA_ResNet/data";
 
     // ── Init cuDNN + cuBLAS ───────────────────────────────────────────────────
     CUDNN_CHECK (cudnnCreate (&g_cudnn));

@@ -66,7 +66,7 @@ CIFAR-10 is distributed as a binary file archive. Download the **binary version*
 If you already ran `CPP_ResNet`, the data is already extracted at:
 
 ```
-CPP_ResNet/data/cifar-10-batches-bin/
+CUDA_ResNet/data/cifar-10-batches-bin/
 ```
 
 You can point `CUDA_ResNet` directly at this path (see Step 4). No extra download needed.
@@ -242,7 +242,7 @@ If you omit the path argument, it defaults to that same location:
 
 ```
 GPU: NVIDIA GeForce RTX 3080  (CC 8.6)
-Loading CIFAR-10 from C:/Users/karan/Documents/Optimization Techniques/CPP_ResNet/data ...
+Loading CIFAR-10 from C:/Users/karan/Documents/Optimization Techniques/CUDA_ResNet/data ...
 Train: 50000  Test: 10000
 Initialising ResNet-18 (benchmarking cuDNN algorithms)...
 Model ready.
