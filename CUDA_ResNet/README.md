@@ -1,4 +1,4 @@
-# CUDA ResNet-18 — CIFAR-10
+# CUDA ResNet-18 on CIFAR-10
 
 A from-scratch ResNet-18 implementation in raw CUDA, using **direct cuDNN and cuBLAS API calls** with no LibTorch/PyTorch dependency. Built as a performance study over the `CPP_ResNet` project in this repo, which uses the LibTorch C++ API.
 
@@ -224,12 +224,6 @@ From inside the `build` directory:
 
 ```
 .\Release\CUDA_ResNet.exe <path-to-data-root>
-```
-
-Example using the data already in this repo:
-
-```
-.\Release\CUDA_ResNet.exe "C:\Users\karan\Documents\Optimization Techniques\CPP_ResNet\data"
 ```
 
 If you omit the path argument, it defaults to that same location:
